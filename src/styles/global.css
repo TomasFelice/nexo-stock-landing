@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+/* ============================================
+   DESIGN TOKENS (Custom Theme)
+   ============================================ */
+@theme {
+  --color-brand: #4F46E5;
+  --color-slate-dark: #0F172A;
+  --color-slate-med: #334155;
+  --color-slate-light: #475569;
+  --color-slate-label: #64748B;
+  --color-bg-base: #F8FAFC;
+  --color-surface: #FFFFFF;
+  --color-border-div: #E2E8F0;
+  --color-success: #10B981;
+  --color-danger: #EF4444;
+  --color-warning: #F59E0B;
+  --color-virtual-bg: #FEF3C7;
+  --color-virtual-text: #B45309;
+  --color-hover-row: #F1F5F9;
+
+  --font-family-sans: 'Inter', sans-serif;
+
+  --shadow-custom: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+
+  --radius-btn: 6px;
+  --radius-card: 12px;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-slate-light);
+  background-color: var(--color-bg-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--color-brand);
+  color: white;
+}
+
+/* ============================================
+   TYPOGRAPHY CLASSES
+   ============================================ */
+.text-h1 {
+  font-size: 24px;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.text-h2 {
+  font-size: 18px;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.text-body {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.text-label {
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
