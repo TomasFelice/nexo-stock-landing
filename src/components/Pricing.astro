@@ -1,12 +1,12 @@
 ---
-// Pricing section with three plan cards (Good, Better, Best) and Setup Fee
+// Pricing section — single plan (Negocio with unlimited deposits)
 ---
 
 <section id="pricing" class="w-full bg-surface py-20 px-4">
     <div class="max-w-6xl mx-auto">
         <div class="text-center mb-12">
             <h2 class="text-h1 text-slate-dark mb-4">
-                Planes claros para escalar tu negocio.
+                Un solo plan. Todo lo que necesitás.
             </h2>
             <p class="text-body text-lg max-w-2xl mx-auto mb-8">
                 NexoStock no es un gasto, es un seguro de ventas. Si el sistema
@@ -68,140 +68,13 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start mb-16">
-            <!-- Plan Inicio -->
+        <!-- Single Plan Card -->
+        <div class="flex justify-center mb-16">
             <div
-                class="bg-surface border border-border-div rounded-card p-8 shadow-sm hover:shadow-custom transition-shadow flex flex-col h-full"
-            >
-                <div class="mb-6">
-                    <h3 class="text-h2 text-slate-dark mb-2">Inicio</h3>
-                    <p class="text-body text-sm">
-                        Para la tienda que recién abandona el Excel y busca
-                        orden básico.
-                    </p>
-                </div>
-                <div class="mb-6">
-                    <div class="flex items-end gap-1">
-                        <span
-                            class="text-[32px] font-bold text-slate-dark leading-none price-display"
-                            data-monthly="15"
-                            data-annual="24">$15</span
-                        >
-                        <span class="text-body text-sm font-medium"
-                            ><span class="currency-label">USD</span> / mes</span
-                        >
-                    </div>
-                    <p
-                        class="text-brand text-sm font-medium mt-1 min-h-[20px] billing-note hidden"
-                    >
-                        Facturado anualmente (<span
-                            class="annual-total"
-                            data-usd="288">$288</span
-                        >
-                        <span class="annual-currency">USD</span>)
-                    </p>
-                </div>
-                <a
-                    href="#contacto"
-                    class="w-full flex items-center justify-center gap-2 bg-transparent border border-slate-300 text-slate-dark px-6 py-3 rounded-btn font-medium text-[15px] hover:bg-slate-50 transition-colors mb-8"
-                >
-                    Comenzar ahora
-                </a>
-                <div class="text-sm font-semibold text-slate-dark mb-4">
-                    Incluye:
-                </div>
-                <ul class="flex flex-col gap-3 flex-grow">
-                    <li class="flex items-start gap-3 text-body text-sm">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="text-brand shrink-0 mt-0.5"
-                            ><path d="M20 6 9 17l-5-5"></path></svg
-                        >
-                        <span>Sincronización con 1 tienda Tiendanube.</span>
-                    </li>
-                    <li class="flex items-start gap-3 text-body text-sm">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="text-brand shrink-0 mt-0.5"
-                            ><path d="M20 6 9 17l-5-5"></path></svg
-                        >
-                        <span>1 Depósito Físico (El local) + 1 de Fallas.</span>
-                    </li>
-                    <li class="flex items-start gap-3 text-body text-sm">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="text-brand shrink-0 mt-0.5"
-                            ><path d="M20 6 9 17l-5-5"></path></svg
-                        >
-                        <span
-                            >Sincronización de catálogo y stock en tiempo real.</span
-                        >
-                    </li>
-                    <li class="flex items-start gap-3 text-body text-sm">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="text-brand shrink-0 mt-0.5"
-                            ><path d="M20 6 9 17l-5-5"></path></svg
-                        >
-                        <span>Módulo POS básico (Ventas locales).</span>
-                    </li>
-                    <li class="flex items-start gap-3 text-body text-sm">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="text-brand shrink-0 mt-0.5"
-                            ><path d="M20 6 9 17l-5-5"></path></svg
-                        >
-                        <span>Soporte por email / ticket.</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Plan Negocio (Destacado) -->
-            <div
-                class="bg-surface border-2 border-brand rounded-card p-8 shadow-custom flex flex-col relative h-full transform md:-translate-y-4"
+                class="bg-surface border-2 border-brand rounded-card p-8 md:p-10 shadow-custom flex flex-col relative w-full max-w-lg"
             >
                 <div
-                    class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-brand text-white text-[12px] font-bold px-4 py-1 rounded-full uppercase tracking-wide"
+                    class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-brand text-white text-[12px] font-bold px-4 py-1 rounded-full uppercase tracking-wide whitespace-nowrap"
                 >
                     El más elegido
                 </div>
@@ -209,18 +82,19 @@
                 <div class="mb-6">
                     <h3 class="text-h2 text-slate-dark mb-2">Negocio</h3>
                     <p class="text-body text-sm">
-                        El motor ideal para vender sin miedo a quiebres de
-                        stock.
+                        El motor completo para vender sin miedo a quiebres de
+                        stock, con depósitos ilimitados.
                     </p>
                 </div>
+
                 <div class="mb-6">
                     <div class="flex items-end gap-1">
                         <span
-                            class="text-[32px] font-bold text-slate-dark leading-none price-display"
+                            class="text-[42px] font-bold text-slate-dark leading-none price-display"
                             data-monthly="29"
-                            data-annual="39">$29</span
+                            data-annual="23">$29</span
                         >
-                        <span class="text-body text-sm font-medium"
+                        <span class="text-body text-sm font-medium mb-1"
                             ><span class="currency-label">USD</span> / mes</span
                         >
                     </div>
@@ -229,28 +103,27 @@
                     >
                         Facturado anualmente (<span
                             class="annual-total"
-                            data-usd="468">$468</span
+                            data-usd="276">$276</span
                         >
                         <span class="annual-currency">USD</span>)
                     </p>
                 </div>
+
                 <a
                     href="#contacto"
-                    class="w-full flex items-center justify-center gap-2 bg-brand text-white px-6 py-3 rounded-btn font-medium text-[15px] hover:bg-brand/90 transition-colors shadow-sm mb-4"
+                    class="w-full flex items-center justify-center gap-2 bg-brand text-white px-6 py-3 rounded-btn font-medium text-[15px] hover:bg-brand/90 transition-colors shadow-sm mb-2"
                 >
                     Prueba Gratuita 14 días
                 </a>
-                <p class="text-center text-xs text-slate mb-6">
+                <p class="text-center text-xs text-slate mb-8">
                     No requiere tarjeta de crédito
                 </p>
 
                 <div class="text-sm font-semibold text-slate-dark mb-4">
-                    Todo lo de Inicio, más:
+                    Todo incluido:
                 </div>
-                <ul class="flex flex-col gap-3 flex-grow">
-                    <li
-                        class="flex items-start gap-3 text-slate-dark font-medium text-sm"
-                    >
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
+                    <li class="flex items-start gap-3 text-body text-sm">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="18"
@@ -264,10 +137,7 @@
                             class="text-brand shrink-0 mt-0.5"
                             ><path d="M20 6 9 17l-5-5"></path></svg
                         >
-                        <span
-                            >Depósito Virtual / Stock Imaginario (Venta en
-                            verde).</span
-                        >
+                        <span>Sincronización con Tiendanube.</span>
                     </li>
                     <li class="flex items-start gap-3 text-body text-sm">
                         <svg
@@ -283,7 +153,57 @@
                             class="text-brand shrink-0 mt-0.5"
                             ><path d="M20 6 9 17l-5-5"></path></svg
                         >
-                        <span>Hasta 3 Depósitos Físicos.</span>
+                        <span>Sincronización de catálogo y stock en tiempo real.</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-body text-sm">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="text-brand shrink-0 mt-0.5"
+                            ><path d="M20 6 9 17l-5-5"></path></svg
+                        >
+                        <span>Módulo POS (Ventas locales).</span>
+                    </li>
+                    <li
+                        class="flex items-start gap-3 text-slate-dark font-semibold text-sm"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="text-brand shrink-0 mt-0.5"
+                            ><path d="M20 6 9 17l-5-5"></path></svg
+                        >
+                        <span>Depósitos Ilimitados.</span>
+                    </li>
+                    <li class="flex items-start gap-3 text-body text-sm">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="text-brand shrink-0 mt-0.5"
+                            ><path d="M20 6 9 17l-5-5"></path></svg
+                        >
+                        <span>Depósito Virtual / Stock Imaginario (Venta en verde).</span>
                     </li>
                     <li class="flex items-start gap-3 text-body text-sm">
                         <svg
@@ -348,133 +268,6 @@
                             ><path d="M20 6 9 17l-5-5"></path></svg
                         >
                         <span>Soporte prioritario por WhatsApp.</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Plan Expansión -->
-            <div
-                class="bg-surface border border-border-div rounded-card p-8 shadow-sm hover:shadow-custom transition-shadow flex flex-col h-full"
-            >
-                <div class="mb-6">
-                    <h3 class="text-h2 text-slate-dark mb-2">Expansión</h3>
-                    <p class="text-body text-sm">
-                        Para tiendas con alto volumen o varias sucursales
-                        físicas.
-                    </p>
-                </div>
-                <div class="mb-6">
-                    <div class="flex items-end gap-1">
-                        <span
-                            class="text-[32px] font-bold text-slate-dark leading-none price-display"
-                            data-monthly="49"
-                            data-annual="72">$49</span
-                        >
-                        <span class="text-body text-sm font-medium"
-                            ><span class="currency-label">USD</span> / mes</span
-                        >
-                    </div>
-                    <p
-                        class="text-brand text-sm font-medium mt-1 min-h-[20px] billing-note hidden"
-                    >
-                        Facturado anualmente (<span
-                            class="annual-total"
-                            data-usd="864">$864</span
-                        >
-                        <span class="annual-currency">USD</span>)
-                    </p>
-                </div>
-                <a
-                    href="#contacto"
-                    class="w-full flex items-center justify-center gap-2 bg-transparent border border-slate-300 text-slate-dark px-6 py-3 rounded-btn font-medium text-[15px] hover:bg-slate-50 transition-colors mb-8"
-                >
-                    Contactar ventas
-                </a>
-                <div class="text-sm font-semibold text-slate-dark mb-4">
-                    Todo lo de Negocio, más:
-                </div>
-                <ul class="flex flex-col gap-3 flex-grow">
-                    <li class="flex items-start gap-3 text-body text-sm">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="text-brand shrink-0 mt-0.5"
-                            ><path d="M20 6 9 17l-5-5"></path></svg
-                        >
-                        <span>Depósitos Ilimitados.</span>
-                    </li>
-                    <li class="flex items-start gap-3 text-body text-sm">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="text-brand shrink-0 mt-0.5"
-                            ><path d="M20 6 9 17l-5-5"></path></svg
-                        >
-                        <span>Soporte para múltiples cuentas Tiendanube.</span>
-                    </li>
-                    <li class="flex items-start gap-3 text-body text-sm">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="text-brand shrink-0 mt-0.5"
-                            ><path d="M20 6 9 17l-5-5"></path></svg
-                        >
-                        <span>Roles de usuario avanzados.</span>
-                    </li>
-                    <li class="flex items-start gap-3 text-body text-sm">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="text-brand shrink-0 mt-0.5"
-                            ><path d="M20 6 9 17l-5-5"></path></svg
-                        >
-                        <span
-                            >Auditorías con exportación avanzada de datos.</span
-                        >
-                    </li>
-                    <li class="flex items-start gap-3 text-body text-sm">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="text-brand shrink-0 mt-0.5"
-                            ><path d="M20 6 9 17l-5-5"></path></svg
-                        >
-                        <span>Reunión mensual de revisión de métricas.</span>
                     </li>
                 </ul>
             </div>
@@ -547,7 +340,7 @@
         let isAnnual = false;
         let isArs = false;
         let exchangeRate = 1;
-        const SETUP_FEE_USD = 30; // matched to user edit
+        const SETUP_FEE_USD = 30;
 
         // Fetch Dolar Oficial
         fetch("https://dolarapi.com/v1/dolares/oficial")
@@ -555,7 +348,6 @@
             .then((data) => {
                 if (data && data.venta) {
                     exchangeRate = data.venta;
-                    // update if user toggled ARS before fetch complete
                     if (isArs) {
                         updateUI();
                     }
@@ -648,7 +440,6 @@
                     "hover:text-slate-dark",
                     "font-medium",
                 );
-
                 btnUsd.classList.remove(
                     "bg-white",
                     "shadow-sm",
@@ -672,7 +463,6 @@
                     "hover:text-slate-dark",
                     "font-medium",
                 );
-
                 btnArs.classList.remove(
                     "bg-white",
                     "shadow-sm",
