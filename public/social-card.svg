@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<rect width="1200" height="630" fill="#f8fafc"/><rect x="850" width="350" height="630" fill="#eeecff"/>
+<text x="80" y="100" font-family="Arial,sans-serif" font-weight="700" font-size="36" fill="#151b32">nexostock</text><text x="82" y="125" font-family="Arial,sans-serif" font-size="15" fill="#64748b">by Benai</text>
+<text x="80" y="228" font-family="Arial,sans-serif" font-size="15" font-weight="700" letter-spacing="2" fill="#4f46e5">INDUMENTARIA + TIENDANUBE</text>
+<g font-family="Arial,sans-serif" font-size="67" font-weight="700" letter-spacing="-3"><text x="80" y="320" fill="#151b32">Tu stock del local</text><text x="80" y="397" fill="#151b32">y Tiendanube,</text><text x="80" y="474" fill="#4f46e5">bajo control.</text></g>
+<text x="82" y="550" font-family="Arial,sans-serif" font-size="22" fill="#596478">Stock por talle, color y ubicación. Arranque acompañado.</text>
+<rect x="875" y="200" width="240" height="260" rx="22" fill="white" stroke="#dedaf4"/>
+<path d="m967 254-49 30 22 36 25-16v95h61v-95l25 16 22-36-49-30c0 30-57 30-57 0Z" fill="#e8e5ff" stroke="#6960c7" stroke-width="4" stroke-linejoin="round"/>
+<circle cx="1080" cy="425" r="35" fill="#4f46e5"/><path d="m1066 425 10 10 19-22" fill="none" stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,173 @@
+---
+const key = import.meta.env.PUBLIC_POSTHOG_KEY || '';
+const host = import.meta.env.PUBLIC_POSTHOG_HOST || 'https://eu.i.posthog.com';
+const environment = import.meta.env.PUBLIC_ANALYTICS_ENV || 'disabled';
+const campaigns = import.meta.env.PUBLIC_ANALYTICS_CAMPAIGNS || '';
+---
+
+<div
+  id="analytics-config"
+  hidden
+  data-key={key}
+  data-host={host}
+  data-environment={environment}
+  data-campaigns={campaigns}
+></div>
+<section
+  id="privacy-notice"
+  class="privacy-notice"
+  role="region"
+  aria-labelledby="privacy-title"
+  hidden
+>
+  <button
+    type="button"
+    class="privacy-close"
+    aria-label="Cerrar y continuar sin medición"
+    data-consent="rejected"
+  >
+    ×
+  </button>
+  <h2 id="privacy-title">¿Nos ayudás a mejorar?</h2>
+  <p id="privacy-description">
+    Con tu permiso medimos visitas y clics de forma seudónima con PostHog. Sin grabar sesiones.
+    Podés cambiar tu decisión desde el pie de página. <a href="/privacidad">Ver privacidad</a>.
+  </p>
+  <div class="privacy-actions">
+    <button type="button" data-consent="rejected">
+      Continuar sin medición
+    </button>
+    <button type="button" data-consent="accepted">
+      Aceptar medición
+    </button>
+  </div>
+</section>
+<script>
+  import {
+    campaignProperties,
+    createTracker,
+    withReference,
+    CONSENT_KEY,
+    SESSION_KEY,
+  } from '../lib/analytics.mjs';
+  const config = document.getElementById('analytics-config')!;
+  const notice = document.getElementById('privacy-notice')!;
+  const privacySignal =
+    navigator.doNotTrack === '1' ||
+    (navigator as Navigator & { globalPrivacyControl?: boolean }).globalPrivacyControl === true;
+  const storage = {
+    read(key: string, session = false) {
+      try {
+        return (session ? sessionStorage : localStorage).getItem(key);
+      } catch {
+        return null;
+      }
+    },
+    write(key: string, value: string, session = false) {
+      try {
+        (session ? sessionStorage : localStorage).setItem(key, value);
+      } catch {
+        /* Private browsing remains usable. */
+      }
+    },
+    remove(key: string) {
+      try {
+        sessionStorage.removeItem(key);
+      } catch {
+        /* No persistence is required. */
+      }
+    },
+  };
+  const choice = storage.read(CONSENT_KEY);
+  const storedReference =
+    choice === 'accepted' && !privacySignal ? storage.read(SESSION_KEY, true) : null;
+  const reference =
+    storedReference && /^NS-[A-F0-9]{8}$/.test(storedReference)
+      ? storedReference
+      : `NS-${crypto.randomUUID().replaceAll('-', '').slice(0, 8).toUpperCase()}`;
+  const params = new URLSearchParams(location.search);
+  const tracker = createTracker({
+    key: config.dataset.key || '',
+    host: config.dataset.host || '',
+    environment: config.dataset.environment || '',
+    hostname: location.hostname,
+    reference,
+    campaign: campaignProperties(params, (config.dataset.campaigns || '').split(',')),
+    device: matchMedia('(max-width: 600px)').matches
+      ? 'mobile'
+      : matchMedia('(max-width: 1024px)').matches
+        ? 'tablet'
+        : 'desktop',
+  });
+  if (privacySignal || storage.read('ns-internal-v1') === '1') tracker.exclude();
+  // Deliberate local opt-out for staff; neither the switch nor arbitrary query values are sent.
+  if (params.get('ns_internal') === '1') {
+    storage.write('ns-internal-v1', '1');
+    tracker.exclude();
+  }
+  if (params.get('ns_internal') === '0') storage.write('ns-internal-v1', '0');
+  let priceVisible = false;
+  const captureVisible = () => {
+    if (location.pathname === '/') tracker.track('landing_view', {}, true);
+    if (priceVisible) tracker.track('pricing_view', { placement: 'pricing' }, true);
+  };
+  const applyChoice = (value: string) => {
+    storage.write(CONSENT_KEY, value);
+    tracker.setConsent(value === 'accepted' && !privacySignal);
+    if (value === 'accepted' && !privacySignal) storage.write(SESSION_KEY, reference, true);
+    else storage.remove(SESSION_KEY);
+    notice.hidden = true;
+    captureVisible();
+  };
+  tracker.setConsent(choice === 'accepted' && !privacySignal);
+  if (choice === 'accepted' && !privacySignal) storage.write(SESSION_KEY, reference, true);
+  notice.hidden =
+    !tracker.enabled ||
+    privacySignal ||
+    storage.read('ns-internal-v1') === '1' ||
+    choice === 'accepted' ||
+    choice === 'rejected';
+  document.querySelectorAll<HTMLAnchorElement>('[data-whatsapp]').forEach((link) => {
+    link.href = withReference(link.href, reference);
+  });
+  document.addEventListener('click', (event) => {
+    const target = event.target as Element | null;
+    const consentButton = target?.closest<HTMLElement>('[data-consent]');
+    if (consentButton) applyChoice(consentButton.dataset.consent || 'rejected');
+    const preferences = target?.closest('[data-privacy-settings]');
+    if (preferences) {
+      if (!tracker.enabled || privacySignal) {
+        document.getElementById('privacy-title')!.textContent = 'Medición desactivada';
+        document.getElementById('privacy-description')!.textContent = privacySignal
+          ? 'Respetamos la señal de privacidad de tu navegador. No enviamos eventos de navegación.'
+          : 'La medición está desactivada en esta versión. Podés navegar y contactar por WhatsApp con normalidad.';
+        notice.querySelectorAll<HTMLElement>('.privacy-actions').forEach((element) => {
+          element.hidden = true;
+        });
+      }
+      notice.hidden = false;
+      notice.querySelector<HTMLButtonElement>('button')?.focus();
+    }
+    const whatsapp = target?.closest<HTMLElement>('[data-whatsapp]');
+    if (whatsapp) tracker.track('whatsapp_click', { placement: whatsapp.dataset.placement });
+    const demo = target?.closest<HTMLElement>('[data-demo-open], nav a[href="/#como-funciona"]');
+    if (demo)
+      tracker.track('demo_open', { placement: demo.dataset.placement || 'navigation' }, true);
+  });
+  document.addEventListener('ns:demo-step', (event) => {
+    tracker.track('demo_open', { placement: 'navigation' }, true);
+    tracker.track('demo_step_view', { step: (event as CustomEvent<string>).detail }, true);
+  });
+  const price = document.getElementById('pricing');
+  if (price && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        priceVisible = entries.some((entry) => entry.isIntersecting);
+        if (priceVisible) tracker.track('pricing_view', { placement: 'pricing' }, true);
+      },
+      { threshold: 0.2 },
+    );
+    observer.observe(price);
+  }
+  captureVisible();
+</script>

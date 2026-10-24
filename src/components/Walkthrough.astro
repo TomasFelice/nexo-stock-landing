@@ -1,0 +1,227 @@
+---
+import Icon from './Icon.astro';
+---
+
+<section id="como-funciona" class="section walkthrough" aria-labelledby="walkthrough-title">
+  <div class="container">
+    <div class="section-heading split-heading">
+      <div>
+        <p class="eyebrow">MENOS CRUCES DE PLANILLAS</p>
+        <h2 id="walkthrough-title">
+          Una venta. Un stock.
+          <br />
+          <span>Todo conectado.</span>
+        </h2>
+      </div>
+      <p>
+        Del producto que busca tu vendedor a la cantidad que ve tu cliente online. Así se relacionan
+        las tareas de cada día.
+      </p>
+    </div>
+    <div class="walkthrough-layout" data-walkthrough>
+      <div
+        role="tablist"
+        aria-label="Recorrido ilustrativo de una venta"
+        aria-orientation="vertical"
+        class="walkthrough-tabs"
+      >
+        <button
+          type="button"
+          role="tab"
+          id="step-sale"
+          aria-controls="panel-sale"
+          aria-selected="true"
+          data-step="sale"
+        >
+          <span class="step-number">01</span>
+          <span>
+            <strong>Registrá la venta</strong>
+            <small>Elegí la variante y el depósito de salida.</small>
+          </span>
+          <Icon name="arrow" size={18} />
+        </button>
+        <button
+          type="button"
+          role="tab"
+          id="step-stock"
+          aria-controls="panel-stock"
+          aria-selected="false"
+          tabindex="-1"
+          data-step="stock"
+        >
+          <span class="step-number">02</span>
+          <span>
+            <strong>Consultá dónde queda stock</strong>
+            <small>Visualizá las cantidades por ubicación.</small>
+          </span>
+          <Icon name="arrow" size={18} />
+        </button>
+        <button
+          type="button"
+          role="tab"
+          id="step-web"
+          aria-controls="panel-web"
+          aria-selected="false"
+          tabindex="-1"
+          data-step="web"
+        >
+          <span class="step-number">03</span>
+          <span>
+            <strong>Actualizá tu disponibilidad web</strong>
+            <small>Según los depósitos que decidís publicar.</small>
+          </span>
+          <Icon name="arrow" size={18} />
+        </button>
+      </div>
+      <div class="walkthrough-panels">
+        <div role="tabpanel" id="panel-sale" aria-labelledby="step-sale" tabindex="0">
+          <div class="demo-panel-top">
+            <span>
+              <Icon name="store" /> Venta local
+            </span>
+            <span class="sample-label">DATOS FICTICIOS</span>
+          </div>
+          <div class="demo-sale">
+            <span class="garment ink">
+              <Icon name="shirt" size={42} />
+            </span>
+            <div>
+              <h3>Remera esencial</h3>
+              <p>
+                Negro / M <span>REM-NEG-M</span>
+              </p>
+            </div>
+            <span class="quantity-chip">1 unidad</span>
+          </div>
+          <div class="demo-field">
+            <span>Depósito de salida</span>
+            <strong>Local principal</strong>
+          </div>
+          <div class="demo-field">
+            <span>Stock en el local</span>
+            <strong>
+              <span class="previous-number">8</span> <Icon name="arrow" size={16} /> 7 unidades
+            </strong>
+          </div>
+          <div class="demo-result">
+            <Icon name="check" size={18} /> Venta registrada en este ejemplo
+          </div>
+          <p class="demo-explanation">
+            El registro conserva la variante y la ubicación de la mercadería vendida.
+          </p>
+        </div>
+        <div role="tabpanel" id="panel-stock" aria-labelledby="step-stock" tabindex="0" hidden>
+          <div class="demo-panel-top">
+            <span>
+              <Icon name="box" /> Stock por ubicación
+            </span>
+            <span class="sample-label">DATOS FICTICIOS</span>
+          </div>
+          <h3 class="demo-product-title">
+            Remera esencial <span>Negro / M</span>
+          </h3>
+          <div class="location-row">
+            <span>
+              <Icon name="store" />
+              Local principal
+            </span>
+            <strong>
+              7 <small>un.</small>
+            </strong>
+            <span class="location-badge">Publica en web</span>
+          </div>
+          <div class="location-row">
+            <span>
+              <Icon name="box" />
+              Depósito
+            </span>
+            <strong>
+              12 <small>un.</small>
+            </strong>
+            <span class="location-badge">Publica en web</span>
+          </div>
+          <div class="location-row">
+            <span>
+              <Icon name="shield" />
+              Fallados
+            </span>
+            <strong>
+              2 <small>un.</small>
+            </strong>
+            <span class="location-badge muted">Fuera de la web</span>
+          </div>
+          <p class="demo-explanation">
+            Las dos unidades falladas quedan separadas de las disponibles para vender.
+          </p>
+        </div>
+        <div role="tabpanel" id="panel-web" aria-labelledby="step-web" tabindex="0" hidden>
+          <div class="demo-panel-top">
+            <span>
+              <Icon name="swap" /> Disponibilidad online
+            </span>
+            <span class="sample-label">DATOS FICTICIOS</span>
+          </div>
+          <h3 class="demo-product-title">Vos definís qué stock se publica.</h3>
+          <div class="stock-equation">
+            <div>
+              <span>Local</span>
+              <strong>7</strong>
+            </div>
+            <span>+</span>
+            <div>
+              <span>Depósito</span>
+              <strong>12</strong>
+            </div>
+            <span>=</span>
+            <div class="equation-total">
+              <span>Para Tiendanube</span>
+              <strong>19</strong>
+            </div>
+          </div>
+          <div class="demo-result">
+            <Icon name="check" size={18} /> Resultado ilustrativo después de procesar la
+            sincronización
+          </div>
+          <p class="demo-explanation">
+            La actualización se procesa en segundo plano. Podés consultar su estado en el panel de
+            sincronización.
+          </p>
+        </div>
+      </div>
+    </div>
+    <p class="demo-caption">
+      Recorrido interactivo ilustrativo. No modifica inventario ni realiza ventas.
+    </p>
+  </div>
+</section>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-walkthrough]').forEach((root) => {
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+    const activate = (tab: HTMLButtonElement, focus = false) => {
+      tabs.forEach((item) => {
+        const selected = item === tab;
+        item.setAttribute('aria-selected', String(selected));
+        item.tabIndex = selected ? 0 : -1;
+        const panel = document.getElementById(item.getAttribute('aria-controls')!);
+        if (panel) panel.hidden = !selected;
+      });
+      if (focus) tab.focus();
+      document.dispatchEvent(new CustomEvent('ns:demo-step', { detail: tab.dataset.step }));
+    };
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => activate(tab));
+      tab.addEventListener('keydown', (event) => {
+        let next = index;
+        if (event.key === 'ArrowDown' || event.key === 'ArrowRight')
+          next = (index + 1) % tabs.length;
+        else if (event.key === 'ArrowUp' || event.key === 'ArrowLeft')
+          next = (index - 1 + tabs.length) % tabs.length;
+        else if (event.key === 'Home') next = 0;
+        else if (event.key === 'End') next = tabs.length - 1;
+        else return;
+        event.preventDefault();
+        activate(tabs[next], true);
+      });
+    });
+  });
+</script>

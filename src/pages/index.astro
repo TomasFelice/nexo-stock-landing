@@ -2,21 +2,27 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
+import Walkthrough from '../components/Walkthrough.astro';
 import Problem from '../components/Problem.astro';
 import Solution from '../components/Solution.astro';
 import Pricing from '../components/Pricing.astro';
+import Faq from '../components/Faq.astro';
 import ContactCta from '../components/ContactCta.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 ---
 
-<Layout title="NexoStock by Benai - Sincronización de Inventario">
-    <Header />
+<Layout title="NexoStock | Tu stock del local y Tiendanube, bajo control">
+  <Header />
+  <main id="contenido">
     <Hero />
+    <Walkthrough />
     <Problem />
     <Solution />
     <Pricing />
+    <Faq />
     <ContactCta />
-    <Footer />
-    <WhatsAppButton />
+  </main>
+  <Footer />
+  <WhatsAppButton />
 </Layout>

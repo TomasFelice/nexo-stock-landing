@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import DemoLink from '../components/DemoLink.astro';
+---
+
+<Layout title="Precio y condiciones comerciales | NexoStock">
+  <Header />
+  <main id="contenido" class="legal-main">
+    <article class="container legal-content">
+      <p class="eyebrow">NEXOSTOCK BY BENAI</p>
+      <h1>Precio y condiciones</h1>
+      <p>Oferta de lanzamiento. Actualización: 23 de octubre de 2026.</p>
+      <h2>Precio y moneda de cobro</h2>
+      <p>
+        Plan Negocio: referencia de USD 39 por mes. Implementación remota: referencia de USD 99 por
+        única vez. Se cobra en pesos argentinos usando la cotización oficial vendedor del Banco
+        Nación al emitir cada cobro. Los importes en pesos de la landing son estimados con el
+        oficial vendedor de DolarAPI / Ámbito, con su fecha visible, y pueden diferir del monto
+        final. La cotización comercial identifica la referencia utilizada, el importe final, los
+        impuestos que correspondan y las condiciones de pago.
+      </p>
+      <h2>Alcance del plan</h2>
+      <p>
+        Una Tiendanube conectada y hasta tres ubicaciones físicas, más depósitos de fallados y
+        virtual. Gestión por variante, ventas, cambios, transferencias, reportes e historial. La
+        suscripción de Tiendanube y las comisiones de servicios externos no están incluidas.
+      </p>
+      <h2>Implementación y soporte</h2>
+      <p>
+        Incluye una importación inicial sobre una planilla preparada por el cliente y una
+        capacitación remota de hasta una hora. El responsable del negocio revisa y aprueba las
+        cantidades antes de activar la sincronización. La suscripción incluye soporte de uso en
+        horario comercial; canal y disponibilidad se informan en la cotización. No se incluye un
+        conteo físico presencial de mercadería.
+      </p>
+      <p>
+        Los desarrollos específicos, la limpieza extensa de datos, las nuevas integraciones y un
+        alcance mayor se presupuestan por separado. Los plazos de implementación se acuerdan después
+        de revisar el catálogo y la operación.
+      </p>
+      <h2>Funcionamiento</h2>
+      <p>
+        La herramienta requiere acceso a internet. La sincronización se procesa en segundo plano y
+        depende de la disponibilidad de los servicios conectados. NexoStock registra ventas y medios
+        de pago; no procesa pagos ni emite comprobantes fiscales en ARCA.
+      </p>
+      <h2>Antes de contratar</h2>
+      <p>
+        La demo de 15 minutos no tiene costo ni compromiso. Esta página informa la oferta; no crea
+        una suscripción ni realiza cobros. La contratación, comienzo de facturación, cambios de
+        precio, cancelación y tratamiento de datos se detallan en una propuesta que aceptás antes de
+        la implementación. No se ofrece contratación anual ni una prueba operativa gratuita
+        automática.
+      </p>
+      <DemoLink placement="contact" />
+    </article>
+  </main>
+  <Footer />
+</Layout>

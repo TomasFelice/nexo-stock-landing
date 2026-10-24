@@ -1,32 +1,45 @@
 ---
+import '../styles/global.css';
+import Analytics from '../components/Analytics.astro';
+import { siteUrl } from '../lib/site';
 interface Props {
   title: string;
   description?: string;
 }
-
-const { title, description = 'Centraliza tu stock, evita quiebres y despídete de las planillas de Excel. Sincronización de inventario en tiempo real entre tu local físico y Tiendanube.' } = Astro.props;
+const {
+  title,
+  description = 'Stock por talle, color y depósito para marcas de indumentaria con Tiendanube. Ventas, cambios y disponibilidad online con implementación acompañada. Coordiná una demo.',
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, siteUrl).href;
 ---
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
+<!doctype html>
+<html lang="es-AR">
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-
+    <meta name="theme-color" content="#4f46e5" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content="NexoStock" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`${siteUrl}/social-card.png`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
     <title>{title}</title>
-</head>
-<body>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">
+      Ir al contenido
+    </a>
     <slot />
-</body>
+    <Analytics />
+  </body>
 </html>
-
-<style is:global>
-  @import '../styles/global.css';
-</style>

@@ -1,9 +1,44 @@
 ---
-// Footer component
+import { whatsappUrl } from '../lib/site';
 ---
 
-<footer class="bg-slate-dark border-t border-slate-light/20 py-8 px-4 text-center">
-    <p class="text-label text-slate-light">
-        &copy; {new Date().getFullYear()} NexoStock. Un producto de <span class="text-white font-medium">Benai</span>. Todos los derechos reservados.
-    </p>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <a class="brand" href="/" aria-label="NexoStock, inicio">
+        <img src="/nexo-stock-logo.webp" width="34" height="34" alt="" />
+        <span>
+          <strong>nexo</strong>stock<small>by Benai</small>
+        </span>
+      </a>
+      <p>
+        El stock de tu marca,
+        <br />
+        en su lugar.
+      </p>
+      <nav aria-label="Enlaces del pie">
+        <a href="/#como-funciona">Cómo funciona</a>
+        <a href="/#pricing">Precio y alcance</a>
+        <a
+          href={whatsappUrl}
+          data-whatsapp
+          data-placement="footer"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Contactar por WhatsApp
+        </a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>© {new Date().getFullYear()} NexoStock. Un producto de Benai.</span>
+      <div>
+        <a href="/privacidad">Privacidad</a>
+        <a href="/condiciones">Condiciones</a>
+        <button type="button" data-privacy-settings>
+          Preferencias de medición
+        </button>
+      </div>
+    </div>
+  </div>
 </footer>

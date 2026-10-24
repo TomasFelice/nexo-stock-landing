@@ -1,0 +1,57 @@
+---
+const questions = [
+  [
+    '¿Para qué negocios está pensado?',
+    'Para marcas de indumentaria que usan Tiendanube y necesitan organizar el stock de su local y sus depósitos por talle y color. En la demo revisamos si encaja con tu operación.',
+  ],
+  [
+    '¿Cómo paso mi catálogo y mi stock actual?',
+    'Importamos el catálogo desde Tiendanube. Las cantidades iniciales se preparan en una planilla y se concilian con el responsable de tu negocio antes de activar la sincronización. La implementación incluye una importación; la limpieza extensa de datos se cotiza por separado.',
+  ],
+  [
+    '¿Cómo funciona la sincronización?',
+    'Las operaciones que afectan el stock se procesan en segundo plano según los depósitos que habilites para la web. El panel de sincronización permite consultar el estado de las tareas. La actualización depende del procesamiento y de la disponibilidad de Tiendanube y la conexión.',
+  ],
+  [
+    '¿Puedo gestionar cambios y mercadería fallada?',
+    'Podés registrar cambios y consultar su historial. La mercadería fallada puede mantenerse en un depósito que no publique stock en Tiendanube. También podés distinguir stock virtual: unidades que todavía tenés que conseguir, separadas de tu inventario físico.',
+  ],
+  [
+    '¿NexoStock factura en ARCA o procesa los pagos?',
+    'NexoStock registra ventas y sus medios de pago. No emite comprobantes fiscales en ARCA ni procesa los cobros de tus clientes. Podés mantener tu circuito de facturación y cobro actual.',
+  ],
+  [
+    '¿Qué incluye el acompañamiento?',
+    'Una puesta en marcha remota, una importación sobre tu planilla preparada y una capacitación de hasta una hora. La suscripción incluye soporte de uso en horario comercial; los desarrollos y trabajos adicionales se presupuestan por separado.',
+  ],
+  [
+    '¿Cómo se paga y qué pasa si tengo más depósitos?',
+    'El plan tiene una referencia de USD 39 por mes y la implementación de USD 99, con cobro en pesos al dólar oficial vendedor del Banco Nación al emitir cada cobro. La cotización informa impuestos y condiciones. Más de tres ubicaciones físicas u otra Tiendanube requieren revisar el alcance.',
+  ],
+];
+---
+
+<section id="preguntas" class="section faq" aria-labelledby="faq-title">
+  <div class="container faq-grid">
+    <div class="section-heading">
+      <p class="eyebrow">ANTES DE DAR EL PASO</p>
+      <h2 id="faq-title">
+        Tus preguntas,
+        <br />
+        con respuestas claras.
+      </h2>
+      <p>Queremos que sepas qué estás contratando y cómo vamos a acompañarte.</p>
+    </div>
+    <div class="faq-list">
+      {questions.map(([question, answer]) => (
+        <details>
+          <summary>
+            {question}
+            <span aria-hidden="true">+</span>
+          </summary>
+          <p>{answer}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,142 @@
+---
+import Icon from './Icon.astro';
+const rows = [
+  {
+    name: 'Remera esencial',
+    variant: 'Negro · M',
+    local: 8,
+    warehouse: 12,
+    online: 20,
+    color: 'ink',
+  },
+  {
+    name: 'Camisa de lino',
+    variant: 'Arena · S',
+    local: 3,
+    warehouse: 5,
+    online: 8,
+    color: 'sand',
+  },
+  {
+    name: 'Buzo oversize',
+    variant: 'Lavanda · L',
+    local: 0,
+    warehouse: 4,
+    online: 4,
+    color: 'lilac',
+  },
+];
+---
+
+<figure class="product-figure" aria-label="Vista ilustrativa del inventario, con datos ficticios">
+  <div class="app-window">
+    <div class="window-bar">
+      <span class="window-dots">
+        <i></i>
+        <i></i>
+        <i></i>
+      </span>
+      <span>NexoStock / Productos y stock</span>
+      <span class="sample-label">EJEMPLO</span>
+    </div>
+    <div class="app-body">
+      <aside class="app-sidebar" aria-hidden="true">
+        <img src="/nexo-stock-logo.webp" width="28" height="28" alt="" />
+        <span>
+          <Icon name="grid" size={18} />
+        </span>
+        <span class="active">
+          <Icon name="box" size={18} />
+        </span>
+        <span>
+          <Icon name="store" size={18} />
+        </span>
+        <span>
+          <Icon name="swap" size={18} />
+        </span>
+        <span>
+          <Icon name="chart" size={18} />
+        </span>
+      </aside>
+      <div class="app-content">
+        <div class="app-heading">
+          <div>
+            <span class="app-overline">TU OPERACIÓN, EN UN LUGAR</span>
+            <h2>Productos y stock</h2>
+          </div>
+          <span class="app-avatar">M</span>
+        </div>
+        <div class="inventory-summary">
+          <div>
+            <span>Variantes</span>
+            <strong>3</strong>
+          </div>
+          <div>
+            <span>Stock físico</span>
+            <strong>
+              32 <small>un.</small>
+            </strong>
+          </div>
+          <div>
+            <span>Ubicaciones</span>
+            <strong>2</strong>
+          </div>
+        </div>
+        <div class="app-toolbar">
+          <span>
+            <Icon name="search" size={15} /> Buscar por nombre, talle o SKU
+          </span>
+          <span class="warehouse-filter">Todos los depósitos⌄</span>
+        </div>
+        <div class="inventory-table-wrap">
+          <table class="inventory-table">
+            <caption class="sr-only">Stock ficticio por variante y ubicación</caption>
+            <thead>
+              <tr>
+                <th>Producto / variante</th>
+                <th>Local</th>
+                <th>Depósito</th>
+                <th>Para la web</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row) => (
+                <tr>
+                  <td>
+                    <span class:list={['garment', row.color]}>
+                      <Icon name="shirt" size={23} />
+                    </span>
+                    <span class="product-name">
+                      <strong>{row.name}</strong>
+                      <small>{row.variant}</small>
+                    </span>
+                  </td>
+                  <td>{row.local === 0 ? <span class="zero-stock">0</span> : row.local}</td>
+                  <td>{row.warehouse}</td>
+                  <td>
+                    <span class="web-stock">{row.online}</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div class="app-status">
+          <span class="status-dot"></span> Disponibilidad web según tus depósitos habilitados
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="stock-note">
+    <span class="note-icon">
+      <Icon name="check" size={21} />
+    </span>
+    <div>
+      <strong>Cada talle, en su lugar.</strong>
+      <span>Local · Depósito · Tiendanube</span>
+    </div>
+  </div>
+  <figcaption>
+    Vista ilustrativa del producto. Los productos y las cantidades son ficticios.
+  </figcaption>
+</figure>

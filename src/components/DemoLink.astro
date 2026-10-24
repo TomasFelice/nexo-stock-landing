@@ -1,0 +1,28 @@
+---
+import { whatsappUrl } from '../lib/site';
+import Icon from './Icon.astro';
+interface Props {
+  placement: string;
+  label?: string;
+  class?: string;
+  secondary?: boolean;
+}
+const {
+  placement,
+  label = 'Coordinar demo de 15 minutos',
+  class: className = '',
+  secondary = false,
+} = Astro.props;
+---
+
+<a
+  href={whatsappUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  data-whatsapp
+  data-placement={placement}
+  class:list={['button', secondary ? 'button-light' : 'button-primary', className]}
+>
+  <span>{label}</span>
+  <Icon name="arrow" size={18} />
+</a>

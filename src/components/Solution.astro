@@ -1,281 +1,45 @@
 ---
-// Solution section — feature showcases
+const steps = [
+  {
+    title: 'Conocemos tu operación',
+    text: 'Vemos tu catálogo, depósitos y forma de vender. Confirmamos el alcance antes de empezar.',
+  },
+  {
+    title: 'Preparamos el inventario',
+    text: 'Importamos el catálogo y una planilla preparada por vos. Conciliamos las cantidades con tu responsable de stock.',
+  },
+  {
+    title: 'Acompañamos el arranque',
+    text: 'Capacitamos a tu equipo y acordamos la activación de la sincronización después de revisar el stock.',
+  },
+];
 ---
 
-<section class="w-full bg-bg-base py-20 px-4">
-    <div class="max-w-5xl mx-auto">
-        <h2 class="text-h1 text-slate-dark text-center mb-16 max-w-2xl mx-auto">
-            Minimalismo funcional diseñado para no equivocarse.
-        </h2>
-
-        <div class="flex flex-col gap-20">
-            <!-- Feature 1: Sincronización Bidireccional -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-                <div class="order-2 md:order-1 flex justify-center">
-                    <div
-                        class="bg-surface border border-border-div rounded-card p-6 shadow-custom w-full max-w-sm flex flex-col gap-6 items-center"
-                    >
-                        <div
-                            class="flex items-center gap-4 w-full justify-between"
-                        >
-                            <div class="flex flex-col items-center gap-2">
-                                <div
-                                    class="w-12 h-12 rounded-card bg-bg-base border border-border-div flex items-center justify-center text-slate-dark"
-                                >
-                                    <!-- store icon -->
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="24"
-                                        height="24"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        ><path
-                                            d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"
-                                        ></path><path
-                                            d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"
-                                        ></path><path
-                                            d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"
-                                        ></path><path d="M2 7h20"></path><path
-                                            d="M22 7v3a2 2 0 0 1-2 2a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7"
-                                        ></path></svg
-                                    >
-                                </div>
-                                <span class="text-label text-slate-label"
-                                    >Local Físico</span
-                                >
-                            </div>
-                            <!-- arrow-right-left icon -->
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="text-brand"
-                                ><path d="m16 3 4 4-4 4"></path><path
-                                    d="M20 7H4"></path><path d="m8 21-4-4 4-4"
-                                ></path><path d="M4 17h16"></path></svg
-                            >
-                            <div class="flex flex-col items-center gap-2">
-                                <div
-                                    class="w-12 h-12 rounded-card bg-brand text-white flex items-center justify-center"
-                                >
-                                    <!-- cloud icon -->
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="24"
-                                        height="24"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        ><path
-                                            d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"
-                                        ></path></svg
-                                    >
-                                </div>
-                                <span class="text-label text-slate-label"
-                                    >Tiendanube</span
-                                >
-                            </div>
-                        </div>
-                        <div
-                            class="w-full bg-success/10 text-success text-label text-center py-2 rounded-btn"
-                        >
-                            Actualizado en segundos
-                        </div>
-                    </div>
-                </div>
-                <div class="order-1 md:order-2">
-                    <h3 class="text-h2 text-slate-dark mb-3">
-                        Sincronización Bidireccional
-                    </h3>
-                    <p class="text-body">
-                        Registras una venta física en el Punto de Venta de
-                        NexoStock y automáticamente se actualiza tu inventario
-                        en Tiendanube. Sin demoras, sin fricciones.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Feature 2: Depósitos Virtuales -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-                <div>
-                    <h3 class="text-h2 text-slate-dark mb-3">
-                        Depósitos Virtuales
-                    </h3>
-                    <p class="text-body">
-                        Vende stock que aún no tienes físicamente con nuestro
-                        sistema de "Stock Imaginario". Permite a tus clientes
-                        comprar bajo demanda sin desordenar la contabilidad de
-                        tu local real.
-                    </p>
-                </div>
-                <div class="flex justify-center">
-                    <div
-                        class="bg-surface border border-border-div rounded-card p-6 shadow-custom w-full max-w-sm"
-                    >
-                        <div
-                            class="flex justify-between items-center mb-4 pb-4 border-b border-border-div"
-                        >
-                            <div class="flex items-center gap-3">
-                                <div
-                                    class="w-10 h-10 rounded-btn bg-bg-base flex items-center justify-center text-slate-dark"
-                                >
-                                    <!-- package icon -->
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="20"
-                                        height="20"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        ><path d="m7.5 4.27 9 5.15"></path><path
-                                            d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"
-                                        ></path><path d="m3.3 7 8.7 5 8.7-5"
-                                        ></path><path d="M12 22V12"></path></svg
-                                    >
-                                </div>
-                                <div class="flex flex-col">
-                                    <span
-                                        class="text-body text-slate-dark font-medium"
-                                        >Buzo Premium</span
-                                    >
-                                    <span class="text-label text-slate-label"
-                                        >SKU: BZ-001</span
-                                    >
-                                </div>
-                            </div>
-                            <span
-                                class="inline-flex items-center gap-1.5 bg-virtual-bg text-virtual-text px-3 py-1.5 rounded-full text-[12px] font-medium border border-[#FDE68A]"
-                            >
-                                <!-- box icon -->
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="14"
-                                    height="14"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    ><path
-                                        d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"
-                                    ></path><path d="m3.3 7 8.7 5 8.7-5"
-                                    ></path><path d="M12 22V12"></path></svg
-                                >
-                                Depósito Virtual
-                            </span>
-                        </div>
-                        <div class="flex justify-between text-label">
-                            <span class="text-slate-label">Stock Asignado:</span
-                            >
-                            <span class="text-slate-dark font-medium"
-                                >50 unidades</span
-                            >
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Feature 3: A prueba de errores -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-                <div class="order-2 md:order-1 flex justify-center">
-                    <div
-                        class="bg-surface border border-border-div rounded-card shadow-custom w-full max-w-sm overflow-hidden"
-                    >
-                        <div
-                            class="p-4 border-b border-border-div bg-bg-base flex justify-between items-center"
-                        >
-                            <span class="text-label text-slate-dark font-medium"
-                                >Nueva Venta Rápida</span
-                            >
-                            <button
-                                class="text-danger hover:bg-danger/10 p-1 rounded-btn transition-colors"
-                            >
-                                <!-- x icon -->
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="16"
-                                    height="16"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    ><path d="M18 6 6 18"></path><path
-                                        d="m6 6 12 12"></path></svg
-                                >
-                            </button>
-                        </div>
-                        <div class="p-6 flex flex-col gap-4">
-                            <div class="flex flex-col gap-1.5">
-                                <label class="text-label text-slate-label"
-                                    >Código de Barras / SKU</label
-                                >
-                                <div
-                                    class="w-full border border-border-div rounded-btn p-2 flex items-center gap-2 bg-surface"
-                                >
-                                    <!-- scan-line icon -->
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="16"
-                                        height="16"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        class="text-slate-label"
-                                        ><path d="M3 7V5a2 2 0 0 1 2-2h2"
-                                        ></path><path
-                                            d="M17 3h2a2 2 0 0 1 2 2v2"
-                                        ></path><path
-                                            d="M21 17v2a2 2 0 0 1-2 2h-2"
-                                        ></path><path
-                                            d="M7 21H5a2 2 0 0 1-2-2v-2"
-                                        ></path><path d="M7 12h10"></path></svg
-                                    >
-                                    <span class="text-body text-slate-light"
-                                        >Ingresar producto...</span
-                                    >
-                                </div>
-                            </div>
-                            <button
-                                class="w-full bg-brand text-white py-2 rounded-btn text-body font-medium mt-2 opacity-50 cursor-not-allowed"
-                                >Cobrar e impactar stock</button
-                            >
-                        </div>
-                    </div>
-                </div>
-                <div class="order-1 md:order-2">
-                    <h3 class="text-h2 text-slate-dark mb-3">
-                        A prueba de errores
-                    </h3>
-                    <p class="text-body">
-                        Interfaz ultra limpia, libre de distracciones. Diseñada
-                        específicamente para que tus vendedores aprendan a
-                        cobrar y gestionar el stock en menos de 10 minutos,
-                        evitando errores humanos.
-                    </p>
-                </div>
-            </div>
-        </div>
+<section class="section onboarding" aria-labelledby="onboarding-title">
+  <div class="container onboarding-grid">
+    <div class="section-heading">
+      <p class="eyebrow">IMPLEMENTACIÓN ACOMPAÑADA</p>
+      <h2 id="onboarding-title">
+        Tu equipo no tiene
+        <br />
+        que empezar solo.
+      </h2>
+      <p>
+        La puesta en marcha también es parte del producto. Trabajamos con vos para conectar la
+        herramienta con la forma en que funciona tu negocio.
+      </p>
+      <span class="onboarding-tag">De tu operación actual a un stock organizado.</span>
     </div>
+    <ol class="onboarding-steps">
+      {steps.map((step, i) => (
+        <li>
+          <span class="onboarding-number">0{i + 1}</span>
+          <div>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
 </section>

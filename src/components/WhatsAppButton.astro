@@ -1,38 +1,31 @@
 ---
-// Sticky WhatsApp floating button
+import DemoLink from './DemoLink.astro';
 ---
 
-<a
-    href="https://wa.me/1144132706"
-    target="_blank"
-    rel="noopener noreferrer"
-    id="wa-sticky-btn"
-    class="fixed bottom-6 right-6 bg-[#25D366] text-white p-3.5 rounded-full shadow-lg transition-all duration-300 z-50 opacity-0 pointer-events-none hover:scale-110 flex items-center justify-center"
-    aria-label="Contactar por WhatsApp"
->
-    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-</a>
-
+<div class="mobile-demo" id="mobile-demo" hidden>
+  <DemoLink placement="mobile" label="Coordinar demo" />
+  <span>15 min · Sin compromiso</span>
+</div>
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const waButton = document.getElementById('wa-sticky-btn');
-        const heroSection = document.getElementById('hero');
-        
-        if (!waButton || !heroSection) return;
-
-        const checkScroll = () => {
-            const heroBottom = heroSection.getBoundingClientRect().bottom;
-            
-            if (heroBottom < 0) {
-                waButton.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
-                waButton.classList.add('opacity-100', 'translate-y-0');
-            } else {
-                waButton.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
-                waButton.classList.remove('opacity-100', 'translate-y-0');
-            }
-        };
-
-        window.addEventListener('scroll', checkScroll);
-        checkScroll();
-    });
+  const mobileDemo = document.getElementById('mobile-demo');
+  const hero = document.getElementById('hero');
+  const contact = document.getElementById('contacto');
+  if (mobileDemo && hero && contact && 'IntersectionObserver' in window) {
+    let heroVisible = true;
+    let contactVisible = false;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === hero) heroVisible = entry.isIntersecting;
+          if (entry.target === contact) contactVisible = entry.isIntersecting;
+        });
+        mobileDemo.hidden = heroVisible || contactVisible;
+      },
+      {
+        rootMargin: `-${document.querySelector('header')?.getBoundingClientRect().height || 68}px 0px 0px 0px`,
+      },
+    );
+    observer.observe(hero);
+    observer.observe(contact);
+  }
 </script>

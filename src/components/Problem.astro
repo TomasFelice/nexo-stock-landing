@@ -1,36 +1,48 @@
 ---
-// Problem section — highlights pain points
+import Icon from './Icon.astro';
+const benefits = [
+  {
+    icon: 'shirt',
+    before: '“Sé que está, pero no sé dónde.”',
+    title: 'Cada talle y color, ubicado.',
+    text: 'Consultá cantidades por variante y depósito. Registrá transferencias para acompañar el recorrido de la mercadería.',
+  },
+  {
+    icon: 'shield',
+    before: '“Ese stock no lo quiero vender online.”',
+    title: 'Publicá con tus propias reglas.',
+    text: 'Elegí qué depósitos suman a Tiendanube. Separá fallados y distinguí las unidades físicas de las que necesitás conseguir.',
+  },
+  {
+    icon: 'swap',
+    before: '“El cambio quedó anotado en un papel.”',
+    title: 'Movimientos con historial.',
+    text: 'Registrá ventas y cambios con su impacto en el stock. Consultá el historial para entender qué pasó con cada producto.',
+  },
+];
 ---
 
-<section class="w-full bg-surface py-20 px-4">
-    <div class="max-w-5xl mx-auto">
-        <h2 class="text-h1 text-slate-dark text-center mb-12">¿Te suena familiar este caos?</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Card 1 -->
-            <div class="bg-surface border border-border-div rounded-card p-6 shadow-custom flex flex-col gap-4 items-start">
-                <div class="w-12 h-12 rounded-full bg-danger/10 flex items-center justify-center text-danger">
-                    <!-- file-x-2 icon -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m8 12.5-5 5"/><path d="m3 12.5 5 5"/></svg>
-                </div>
-                <p class="text-body text-slate-dark">Planillas de Excel desactualizadas a fin del día.</p>
-            </div>
-            <!-- Card 2 -->
-            <div class="bg-surface border border-border-div rounded-card p-6 shadow-custom flex flex-col gap-4 items-start">
-                <div class="w-12 h-12 rounded-full bg-danger/10 flex items-center justify-center text-danger">
-                    <!-- alert-triangle icon -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
-                </div>
-                <p class="text-body text-slate-dark">Vender en el local y olvidar bajar el stock en Tiendanube (quiebres online).</p>
-            </div>
-            <!-- Card 3 -->
-            <div class="bg-surface border border-border-div rounded-card p-6 shadow-custom flex flex-col gap-4 items-start">
-                <div class="w-12 h-12 rounded-full bg-danger/10 flex items-center justify-center text-danger">
-                    <!-- clock-4 icon -->
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                </div>
-                <p class="text-body text-slate-dark">Tus empleados perdiendo horas cruzando datos manualmente.</p>
-            </div>
-        </div>
+<section class="section benefits" aria-labelledby="benefits-title">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">PENSADO PARA EL DÍA A DÍA DE TU MARCA</p>
+      <h2 id="benefits-title">
+        El orden se nota
+        <br />
+        en cada operación.
+      </h2>
     </div>
+    <div class="benefit-grid">
+      {benefits.map((item) => (
+        <article class="benefit-card">
+          <span class="benefit-icon">
+            <Icon name={item.icon} size={27} />
+          </span>
+          <p class="before-quote">{item.before}</p>
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+        </article>
+      ))}
+    </div>
+  </div>
 </section>

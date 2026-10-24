@@ -1,26 +1,20 @@
 ---
-// Header component with logo and CTA
+import DemoLink from './DemoLink.astro';
 ---
 
-<header class="w-full bg-bg-base border-b border-border-div sticky top-0 z-40">
-    <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
-        <!-- Logo -->
-        <div class="flex items-center gap-2">
-            <div class="w-8 h-8 rounded-btn flex items-center justify-center text-white">
-                <img src="/nexo-stock-logo.png" alt="NexoStock Logo" class="w-8 h-8 rounded-btn" />
-            </div>
-            <div class="flex flex-col">
-                <span class="text-h2 text-slate-dark leading-none"><strong>nexo</strong>stock</span>
-                <span class="text-[10px] text-slate-label font-medium tracking-wide">by Benai</span>
-            </div>
-        </div>
-        <!-- Header CTA -->
-        <a href="#contacto" class="hidden sm:inline-flex bg-brand text-white px-5 py-2.5 rounded-btn font-medium text-sm hover:bg-brand/90 transition-colors shadow-custom">
-            Agendar Demo
-        </a>
-        <!-- Mobile CTA (Icon only) -->
-        <a href="#contacto" class="sm:hidden text-brand p-2 bg-brand/10 rounded-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><path d="M21 14V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"/><path d="M3 10h18"/><path d="M16 20h6"/><path d="M19 17v6"/></svg>
-        </a>
-    </div>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="NexoStock, inicio">
+      <img src="/nexo-stock-logo.webp" width="38" height="38" alt="" />
+      <span>
+        <strong>nexo</strong>stock<small>by Benai</small>
+      </span>
+    </a>
+    <nav aria-label="Navegación principal">
+      <a href="/#como-funciona">Cómo funciona</a>
+      <a href="/#pricing">Precio</a>
+      <a href="/#preguntas">Preguntas</a>
+    </nav>
+    <DemoLink placement="header" label="Coordinar demo" class="header-cta" />
+  </div>
 </header>

@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { whatsappUrl } from '../lib/site';
+---
+
+<Layout title="Privacidad | NexoStock">
+  <Header />
+  <main id="contenido" class="legal-main">
+    <article class="container legal-content">
+      <p class="eyebrow">NEXOSTOCK BY BENAI</p>
+      <h1>Privacidad y medición</h1>
+      <p>Última actualización: 24 de octubre de 2026.</p>
+      <h2>Quién atiende tus consultas</h2>
+      <p>
+        Benai, responsable de NexoStock, recibe las consultas sobre esta página a través de{' '}
+        <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+          nuestro WhatsApp de contacto
+        </a>
+        . Por ese medio podés solicitar información o la eliminación de datos que nos hayas enviado.
+      </p>
+      <h2>Tu elección</h2>
+      <p>
+        La medición de navegación es opcional y comienza cuando la aceptás. Podés rechazarla, cerrar
+        el aviso o cambiar tu decisión desde “Preferencias de medición” en el pie de página.
+        Respetamos las señales Do Not Track y Global Privacy Control del navegador. Los enlaces de
+        contacto funcionan aunque rechaces la medición.
+      </p>
+      <h2>Qué medimos</h2>
+      <p>
+        Cuando la medición está habilitada y la aceptás, enviamos a PostHog eventos de visita,
+        visualización de precio, apertura del recorrido y clic a WhatsApp. Incluimos la ubicación
+        del botón, una categoría de dispositivo, códigos de campaña previamente definidos y una
+        referencia aleatoria de sesión. No enviamos la URL completa, parámetros libres ni el
+        contenido de formularios. No grabamos sesiones ni capturamos automáticamente el contenido de
+        la pantalla.
+      </p>
+      <p>
+        La configuración evita crear perfiles personales y desactiva la geolocalización. Como toda
+        conexión a un proveedor, el envío de eventos implica una comunicación de red con PostHog. Su{' '}
+        <a href="https://posthog.com/privacy" target="_blank" rel="noopener noreferrer">
+          política de privacidad
+        </a>{' '}
+        describe su tratamiento de datos.
+      </p>
+      <h2>Qué guardamos en tu navegador</h2>
+      <p>
+        Guardamos tu preferencia de medición en el almacenamiento local. Si aceptás, conservamos una
+        referencia aleatoria en el almacenamiento de la sesión para relacionar los eventos de esa
+        sesión. Al rechazar, eliminamos esa referencia almacenada. No usamos cookies de analítica ni
+        compartimos una identidad entre las instalaciones de clientes.
+      </p>
+      <h2>Cotización en pesos</h2>
+      <p>
+        Para mostrar precios orientativos en pesos, consultamos la cotización pública de DolarAPI.
+        Esa conexión no envía cookies ni una referencia de navegación. Guardamos únicamente la
+        cotización y su fecha de consulta en una caché local que se renueva después de una hora.
+        Este dato funcional no identifica al visitante y funciona independientemente de la medición.
+      </p>
+      <h2>Contacto por WhatsApp</h2>
+      <p>
+        Los enlaces abren WhatsApp con un mensaje que podés editar antes de enviarlo. El mensaje
+        incluye una referencia aleatoria para relacionar una consulta con su origen si hay medición
+        aceptada; esa referencia no contiene tu teléfono ni tu nombre. Hacer clic no envía el
+        mensaje: vos decidís si lo enviás. Los datos que compartas allí se usan para atender tu
+        consulta comercial y coordinar la demo.
+      </p>
+      <h2>Retención y datos del producto</h2>
+      <p>
+        Los eventos de navegación se conservan hasta doce meses en PostHog o por un período menor si
+        se configura así. El seguimiento de contactos se conserva durante la relación comercial y se
+        revisa para eliminar información que deje de ser necesaria. Las condiciones sobre datos
+        operativos de cada negocio se acuerdan en su implementación. Los resúmenes de uso del
+        producto no incluyen compradores, productos, importes ni credenciales.
+      </p>
+    </article>
+  </main>
+  <Footer />
+</Layout>

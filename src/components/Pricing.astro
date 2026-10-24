@@ -1,502 +1,205 @@
 ---
-// Pricing section — single plan (Negocio with unlimited deposits)
+import DemoLink from './DemoLink.astro';
+import Icon from './Icon.astro';
+import { offer } from '../lib/site';
+import fallbackQuote from '../data/exchange-rate.json';
+import { loadQuote, formatArs, formatQuoteDate } from '../lib/exchange-rate.mjs';
+const { quote } = await loadQuote({ fallback: fallbackQuote });
+const includes = [
+  'Una tienda Tiendanube conectada',
+  `Hasta ${offer.physicalLocations} ubicaciones físicas`,
+  'Depósitos de fallados y virtual',
+  'Stock por variante, talle y color',
+  'Registro de ventas, cambios y transferencias',
+  'Reportes e historial de movimientos',
+  'Soporte de uso en horario comercial',
+];
 ---
 
-<section id="pricing" class="w-full bg-surface py-20 px-4">
-    <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-12">
-            <h2 class="text-h1 text-slate-dark mb-4">
-                Un solo plan. Todo lo que necesitás.
-            </h2>
-            <p class="text-body text-lg max-w-2xl mx-auto mb-8">
-                NexoStock no es un gasto, es un seguro de ventas. Si el sistema
-                te salva de perder solo 2 ventas al mes por descontrol de stock,
-                ya se pagó solo.
-            </p>
-
-            <!-- Controls Container -->
-            <div
-                class="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-12"
-            >
-                <!-- Currency Toggle -->
-                <div
-                    class="flex items-center p-1 bg-slate-100 rounded-full border border-slate-200"
-                >
-                    <button
-                        type="button"
-                        id="btn-usd"
-                        class="px-5 py-1.5 text-sm font-bold rounded-full bg-white shadow-sm text-slate-dark transition-all"
-                        >USD</button
-                    >
-                    <button
-                        type="button"
-                        id="btn-ars"
-                        class="px-5 py-1.5 text-sm font-medium rounded-full text-slate hover:text-slate-dark transition-all"
-                        >ARS</button
-                    >
-                </div>
-
-                <!-- Billing Toggle -->
-                <div class="flex items-center justify-center gap-3">
-                    <span
-                        class="text-sm font-medium text-slate"
-                        id="text-monthly">Mensual</span
-                    >
-                    <button
-                        type="button"
-                        id="billing-toggle"
-                        class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-slate-200 transition-colors duration-200 ease-in-out focus:outline-none"
-                        role="switch"
-                        aria-checked="false"
-                    >
-                        <span
-                            aria-hidden="true"
-                            class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out translate-x-0"
-                            id="toggle-circle"></span>
-                    </button>
-                    <div class="flex items-center gap-2">
-                        <span
-                            class="text-sm font-medium text-slate-dark"
-                            id="text-annual">Anual</span
-                        >
-                        <span
-                            class="bg-brand/10 text-brand text-[11px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide"
-                            >Setup Bonificado</span
-                        >
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Single Plan Card -->
-        <div class="flex justify-center mb-16">
-            <div
-                class="bg-surface border-2 border-brand rounded-card p-8 md:p-10 shadow-custom flex flex-col relative w-full max-w-lg"
-            >
-                <div
-                    class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-brand text-white text-[12px] font-bold px-4 py-1 rounded-full uppercase tracking-wide whitespace-nowrap"
-                >
-                    El más elegido
-                </div>
-
-                <div class="mb-6">
-                    <h3 class="text-h2 text-slate-dark mb-2">Negocio</h3>
-                    <p class="text-body text-sm">
-                        El motor completo para vender sin miedo a quiebres de
-                        stock, con depósitos ilimitados.
-                    </p>
-                </div>
-
-                <div class="mb-6">
-                    <div class="flex items-end gap-1">
-                        <span
-                            class="text-[42px] font-bold text-slate-dark leading-none price-display"
-                            data-monthly="29"
-                            data-annual="23">$29</span
-                        >
-                        <span class="text-body text-sm font-medium mb-1"
-                            ><span class="currency-label">USD</span> / mes</span
-                        >
-                    </div>
-                    <p
-                        class="text-brand text-sm font-medium mt-1 min-h-[20px] billing-note hidden"
-                    >
-                        Facturado anualmente (<span
-                            class="annual-total"
-                            data-usd="276">$276</span
-                        >
-                        <span class="annual-currency">USD</span>)
-                    </p>
-                </div>
-
-                <a
-                    href="#contacto"
-                    class="w-full flex items-center justify-center gap-2 bg-brand text-white px-6 py-3 rounded-btn font-medium text-[15px] hover:bg-brand/90 transition-colors shadow-sm mb-2"
-                >
-                    Prueba Gratuita 14 días
-                </a>
-                <p class="text-center text-xs text-slate mb-8">
-                    No requiere tarjeta de crédito
-                </p>
-
-                <div class="text-sm font-semibold text-slate-dark mb-4">
-                    Todo incluido:
-                </div>
-                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
-                    <li class="flex items-start gap-3 text-body text-sm">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="text-brand shrink-0 mt-0.5"
-                            ><path d="M20 6 9 17l-5-5"></path></svg
-                        >
-                        <span>Sincronización con Tiendanube.</span>
-                    </li>
-                    <li class="flex items-start gap-3 text-body text-sm">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="text-brand shrink-0 mt-0.5"
-                            ><path d="M20 6 9 17l-5-5"></path></svg
-                        >
-                        <span>Sincronización de catálogo y stock en tiempo real.</span>
-                    </li>
-                    <li class="flex items-start gap-3 text-body text-sm">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="text-brand shrink-0 mt-0.5"
-                            ><path d="M20 6 9 17l-5-5"></path></svg
-                        >
-                        <span>Módulo POS (Ventas locales).</span>
-                    </li>
-                    <li
-                        class="flex items-start gap-3 text-slate-dark font-semibold text-sm"
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="text-brand shrink-0 mt-0.5"
-                            ><path d="M20 6 9 17l-5-5"></path></svg
-                        >
-                        <span>Depósitos Ilimitados.</span>
-                    </li>
-                    <li class="flex items-start gap-3 text-body text-sm">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="text-brand shrink-0 mt-0.5"
-                            ><path d="M20 6 9 17l-5-5"></path></svg
-                        >
-                        <span>Depósito Virtual / Stock Imaginario (Venta en verde).</span>
-                    </li>
-                    <li class="flex items-start gap-3 text-body text-sm">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="text-brand shrink-0 mt-0.5"
-                            ><path d="M20 6 9 17l-5-5"></path></svg
-                        >
-                        <span>Módulo completo de Transferencias.</span>
-                    </li>
-                    <li class="flex items-start gap-3 text-body text-sm">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="text-brand shrink-0 mt-0.5"
-                            ><path d="M20 6 9 17l-5-5"></path></svg
-                        >
-                        <span>Alertas de Stock Mínimo.</span>
-                    </li>
-                    <li class="flex items-start gap-3 text-body text-sm">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="text-brand shrink-0 mt-0.5"
-                            ><path d="M20 6 9 17l-5-5"></path></svg
-                        >
-                        <span>Dashboard de Reportes y Estadísticas.</span>
-                    </li>
-                    <li class="flex items-start gap-3 text-body text-sm">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="18"
-                            height="18"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="text-brand shrink-0 mt-0.5"
-                            ><path d="M20 6 9 17l-5-5"></path></svg
-                        >
-                        <span>Soporte prioritario por WhatsApp.</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Setup Fee Section -->
-        <div
-            class="max-w-4xl mx-auto bg-slate-50 border border-slate-200 rounded-xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 shadow-sm"
-        >
-            <div class="flex-shrink-0 text-brand">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="48"
-                    height="48"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    ><path d="M12 2v20"></path><path
-                        d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
-                    ></path></svg
-                >
-            </div>
-            <div class="flex-grow text-center md:text-left">
-                <h4 class="text-xl font-bold text-slate-dark mb-2">
-                    Onboarding y Seteo Inicial
-                </h4>
-                <p class="text-body text-sm mb-4">
-                    Evita el dolor de cabeza de configurar el stock por primera
-                    vez. Nuestro equipo de expertos de Benai se encarga de
-                    importar tu Excel, auditar tu primer stock físico y dejar la
-                    herramienta 100% lista para operar.
-                </p>
-                <div
-                    class="flex flex-col sm:flex-row items-center gap-3 justify-center md:justify-start"
-                >
-                    <span
-                        class="font-medium text-slate-dark text-lg"
-                        id="setup-fee-price">Valor: $30 USD</span
-                    >
-                    <span class="hidden sm:inline text-slate-300">|</span>
-                    <span class="text-brand font-bold setup-bonus-text"
-                        >¡Bonificado al 100% contratando el Plan Anual!</span
-                    >
-                </div>
-            </div>
-        </div>
+<section id="pricing" class="section pricing" aria-labelledby="pricing-title">
+  <div class="container pricing-grid">
+    <div class="section-heading">
+      <p class="eyebrow">UNA OFERTA CLARA PARA EMPEZAR</p>
+      <h2 id="pricing-title">
+        Ordená tu stock.
+        <br />
+        <span>Conocé tu inversión.</span>
+      </h2>
+      <p>
+        Un plan para marcas que venden en un local y en Tiendanube. Si tu operación necesita otro
+        alcance, lo conversamos en la demo.
+      </p>
+      <div class="pricing-side-note">
+        <Icon name="chat" size={23} />
+        <p>
+          Primero vemos si encaja.
+          <br />
+          <strong>La demo no tiene costo ni compromiso.</strong>
+        </p>
+      </div>
     </div>
+    <div
+      class="price-card"
+      data-peso-pricing
+      data-monthly-usd={offer.monthly}
+      data-setup-usd={offer.setup}
+      data-initial-quote={JSON.stringify(quote)}
+    >
+      <div class="price-card-top">
+        <span class="plan-name">Plan Negocio</span>
+        <span class="launch-label">PRECIO DE LANZAMIENTO</span>
+      </div>
+      <div class="price-line">
+        <span class="price-currency" data-price-currency>
+          {quote ? '$' : 'USD'}
+        </span>
+        <strong data-monthly-amount>
+          {quote ? formatArs(offer.monthly, quote.venta) : offer.monthly}
+        </strong>
+        <span class="price-period">
+          <span data-price-unit>{quote ? 'ARS' : ''}</span> / mes
+        </span>
+      </div>
+      <p class="price-reference" data-price-reference>
+        {quote
+          ? `Estimado en pesos · referencia USD ${offer.monthly}/mes`
+          : 'Se cobra en pesos. Consultanos el equivalente actualizado.'}
+      </p>
+      <p class="price-subtitle">Gestión de stock + conexión con Tiendanube</p>
+      <ul class="included-list">
+        {includes.map((item) => (
+          <li>
+            <Icon name="check" size={17} />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+      <div class="setup-fee">
+        <div>
+          <strong>Implementación remota</strong>
+          <span>Pago único</span>
+        </div>
+        <div class="setup-price">
+          <strong data-setup-amount>
+            {quote ? `$${formatArs(offer.setup, quote.venta)} ARS` : `USD ${offer.setup}`}
+          </strong>
+          <span>Referencia USD {offer.setup}</span>
+        </div>
+      </div>
+      <p class="setup-description">
+        Incluye una importación inicial sobre tu planilla y una capacitación remota de hasta una
+        hora.
+      </p>
+      <div class="exchange-note" aria-live="polite" aria-atomic="true">
+        <p data-exchange-status>
+          {quote
+            ? `Dólar oficial vendedor: $${formatArs(1, quote.venta)} · cotización del ${formatQuoteDate(quote.fechaActualizacion)}.`
+            : 'El equivalente en pesos no está disponible por el momento.'}
+        </p>
+        <p>
+          Fuente:{' '}
+          <a
+            href="https://dolarapi.com/docs/argentina/operations/get-dolar-oficial"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            DolarAPI / Ámbito
+          </a>
+          . Importe orientativo.
+        </p>
+      </div>
+      <DemoLink placement="pricing" class="price-cta" />
+      <p class="price-terms">
+        El importe final se calcula en pesos al dólar oficial vendedor del Banco Nación al emitir
+        cada cobro; puede variar respecto de este estimado. La cotización detalla el importe final y
+        los impuestos que correspondan.
+      </p>
+      <p class="price-terms">
+        Desarrollos, limpieza extensa de datos y nuevas integraciones se cotizan por separado.
+        Suscripción de Tiendanube no incluida.
+      </p>
+    </div>
+  </div>
 </section>
 
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const toggleBtn = document.getElementById("billing-toggle");
-        const toggleCircle = document.getElementById("toggle-circle");
-        const textMonthly = document.getElementById("text-monthly");
-        const textAnnual = document.getElementById("text-annual");
-
-        const btnUsd = document.getElementById("btn-usd");
-        const btnArs = document.getElementById("btn-ars");
-
-        const priceDisplays = document.querySelectorAll(".price-display");
-        const billingNotes = document.querySelectorAll(".billing-note");
-        const annualTotals = document.querySelectorAll(".annual-total");
-        const currencyLabels = document.querySelectorAll(".currency-label");
-        const annualCurrencies = document.querySelectorAll(".annual-currency");
-        const setupFeePrice = document.getElementById("setup-fee-price");
-
-        let isAnnual = false;
-        let isArs = false;
-        let exchangeRate = 1;
-        const SETUP_FEE_USD = 30;
-
-        // Fetch Dolar Oficial
-        fetch("https://dolarapi.com/v1/dolares/oficial")
-            .then((response) => response.json())
-            .then((data) => {
-                if (data && data.venta) {
-                    exchangeRate = data.venta;
-                    if (isArs) {
-                        updateUI();
-                    }
-                }
-            })
-            .catch((error) =>
-                console.error("Error fetching exchange rate:", error),
-            );
-
-        function formatPrice(usdPrice) {
-            const num = isArs ? usdPrice * exchangeRate : usdPrice;
-            return isArs
-                ? new Intl.NumberFormat("es-AR", {
-                      maximumFractionDigits: 0,
-                  }).format(num)
-                : num.toString();
+  import {
+    loadQuote,
+    validateQuote,
+    formatArs,
+    formatQuoteDate,
+    RATE_CACHE_KEY,
+    CACHE_TTL_MS,
+  } from '../lib/exchange-rate.mjs';
+  const root = document.querySelector<HTMLElement>('[data-peso-pricing]');
+  if (root) {
+    const monthly = Number(root.dataset.monthlyUsd);
+    const setup = Number(root.dataset.setupUsd);
+    let initial: unknown = null;
+    try {
+      initial = JSON.parse(root.dataset.initialQuote || 'null');
+    } catch {
+      /* No fabricated rate. */
+    }
+    let current = validateQuote(initial);
+    let cached: { fetchedAt: number; quote: unknown } | null = null;
+    try {
+      const value = JSON.parse(localStorage.getItem(RATE_CACHE_KEY) || 'null');
+      if (
+        value &&
+        typeof value.fetchedAt === 'number' &&
+        value.fetchedAt <= Date.now() &&
+        validateQuote(value.quote)
+      )
+        cached = value;
+    } catch {
+      /* Storage is optional. */
+    }
+    const cachedQuote = validateQuote(cached?.quote);
+    if (
+      cachedQuote &&
+      (!current ||
+        Date.parse(cachedQuote.fechaActualizacion) > Date.parse(current.fechaActualizacion))
+    )
+      current = cachedQuote;
+    const setText = (selector: string, value: string) => {
+      const element = root.querySelector(selector);
+      if (element) element.textContent = value;
+    };
+    const render = (quote: ReturnType<typeof validateQuote>, offline = false) => {
+      root.classList.toggle('price-unavailable', !quote);
+      setText('[data-price-currency]', quote ? '$' : 'USD');
+      setText('[data-price-unit]', quote ? 'ARS' : '');
+      setText('[data-monthly-amount]', quote ? formatArs(monthly, quote.venta) : String(monthly));
+      setText(
+        '[data-price-reference]',
+        quote
+          ? `Estimado en pesos · referencia USD ${monthly}/mes`
+          : 'Se cobra en pesos. Consultanos el equivalente actualizado.',
+      );
+      setText(
+        '[data-setup-amount]',
+        quote ? `$${formatArs(setup, quote.venta)} ARS` : `USD ${setup}`,
+      );
+      setText(
+        '[data-exchange-status]',
+        quote
+          ? `Dólar oficial vendedor: $${formatArs(1, quote.venta)} · cotización del ${formatQuoteDate(quote.fechaActualizacion)}.${offline ? ' Último valor disponible; no pudimos actualizarlo ahora.' : ''}`
+          : 'No pudimos obtener una cotización reciente. Consultanos el importe en pesos.',
+      );
+    };
+    render(current);
+    if (!cached || Date.now() - cached.fetchedAt >= CACHE_TTL_MS || !current) {
+      loadQuote({ fallback: current }).then(({ quote, live }) => {
+        render(quote, !live);
+        if (live && quote) {
+          try {
+            localStorage.setItem(RATE_CACHE_KEY, JSON.stringify({ fetchedAt: Date.now(), quote }));
+          } catch {
+            /* No persistence required. */
+          }
         }
-
-        function updateUI() {
-            const currencyStr = isArs ? "ARS" : "USD";
-
-            // Update plan prices
-            priceDisplays.forEach((display) => {
-                const usdPrice = isAnnual
-                    ? parseFloat(display.getAttribute("data-annual"))
-                    : parseFloat(display.getAttribute("data-monthly"));
-                display.textContent = `$${formatPrice(usdPrice)}`;
-            });
-
-            // Update annual totals
-            annualTotals.forEach((total) => {
-                const usdPrice = parseFloat(total.getAttribute("data-usd"));
-                total.textContent = `$${formatPrice(usdPrice)}`;
-            });
-
-            // Update currencies
-            currencyLabels.forEach(
-                (label) => (label.textContent = currencyStr),
-            );
-            annualCurrencies.forEach(
-                (label) => (label.textContent = currencyStr),
-            );
-
-            // Update billing notes visibility
-            billingNotes.forEach((note) => {
-                if (isAnnual) note.classList.remove("hidden");
-                else note.classList.add("hidden");
-            });
-
-            // Update Setup Fee
-            if (isAnnual) {
-                setupFeePrice.innerHTML = `<span class="line-through text-slate-400">$${formatPrice(SETUP_FEE_USD)} ${currencyStr}</span> <span class="text-brand ml-1">Gratis</span>`;
-            } else {
-                setupFeePrice.innerHTML = `Valor: $${formatPrice(SETUP_FEE_USD)} ${currencyStr}`;
-            }
-
-            // Update billing toggle styles
-            if (isAnnual) {
-                toggleBtn.setAttribute("aria-checked", "true");
-                toggleBtn.classList.remove("bg-slate-200");
-                toggleBtn.classList.add("bg-brand");
-                toggleCircle.classList.remove("translate-x-0");
-                toggleCircle.classList.add("translate-x-5");
-                textMonthly.classList.remove("text-slate-dark");
-                textMonthly.classList.add("text-slate");
-                textAnnual.classList.remove("text-slate");
-                textAnnual.classList.add("text-slate-dark");
-            } else {
-                toggleBtn.setAttribute("aria-checked", "false");
-                toggleBtn.classList.remove("bg-brand");
-                toggleBtn.classList.add("bg-slate-200");
-                toggleCircle.classList.remove("translate-x-5");
-                toggleCircle.classList.add("translate-x-0");
-                textMonthly.classList.remove("text-slate");
-                textMonthly.classList.add("text-slate-dark");
-                textAnnual.classList.remove("text-slate-dark");
-                textAnnual.classList.add("text-slate");
-            }
-
-            // Update currency toggle styles
-            if (isArs) {
-                btnArs.classList.add(
-                    "bg-white",
-                    "shadow-sm",
-                    "text-slate-dark",
-                    "font-bold",
-                );
-                btnArs.classList.remove(
-                    "text-slate",
-                    "hover:text-slate-dark",
-                    "font-medium",
-                );
-                btnUsd.classList.remove(
-                    "bg-white",
-                    "shadow-sm",
-                    "text-slate-dark",
-                    "font-bold",
-                );
-                btnUsd.classList.add(
-                    "text-slate",
-                    "hover:text-slate-dark",
-                    "font-medium",
-                );
-            } else {
-                btnUsd.classList.add(
-                    "bg-white",
-                    "shadow-sm",
-                    "text-slate-dark",
-                    "font-bold",
-                );
-                btnUsd.classList.remove(
-                    "text-slate",
-                    "hover:text-slate-dark",
-                    "font-medium",
-                );
-                btnArs.classList.remove(
-                    "bg-white",
-                    "shadow-sm",
-                    "text-slate-dark",
-                    "font-bold",
-                );
-                btnArs.classList.add(
-                    "text-slate",
-                    "hover:text-slate-dark",
-                    "font-medium",
-                );
-            }
-        }
-
-        if (toggleBtn) {
-            toggleBtn.addEventListener("click", () => {
-                isAnnual = !isAnnual;
-                updateUI();
-            });
-        }
-
-        if (btnUsd && btnArs) {
-            btnUsd.addEventListener("click", () => {
-                if (isArs) {
-                    isArs = false;
-                    updateUI();
-                }
-            });
-            btnArs.addEventListener("click", () => {
-                if (!isArs) {
-                    isArs = true;
-                    updateUI();
-                }
-            });
-        }
-    });
+      });
+    }
+  }
 </script>
