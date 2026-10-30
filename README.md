@@ -1,6 +1,6 @@
 # NexoStock — landing comercial
 
-Landing estática en Astro. Oferta de lanzamiento: **USD 39/mes + USD 99 de implementación**, una Tiendanube y hasta tres ubicaciones físicas más fallados y virtual. Cobro en ARS al oficial vendedor del Banco Nación al emitir cada cobro. Sin anual ni prueba operativa automática.
+Landing estática en Astro. Oferta de lanzamiento: **USD 29/mes + USD 59 de implementación**, una Tiendanube y hasta tres ubicaciones físicas más fallados y virtual. Cobro en ARS al oficial vendedor del Banco Nación al emitir cada cobro. Sin anual ni prueba operativa automática.
 
 ### Precios en pesos
 

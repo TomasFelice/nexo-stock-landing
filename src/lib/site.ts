@@ -2,8 +2,8 @@ const number = import.meta.env.PUBLIC_WHATSAPP_NUMBER || '5491144132706';
 if (!/^549\d{10}$/.test(number))
   throw new Error('PUBLIC_WHATSAPP_NUMBER debe usar el formato 549 + 10 dígitos.');
 export const offer = {
-  monthly: 39,
-  setup: 99,
+  monthly: 29,
+  setup: 59,
   physicalLocations: 3,
   whatsappNumber: number,
   message:

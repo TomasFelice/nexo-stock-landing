@@ -1,4 +1,6 @@
 ---
+import { offer } from '../lib/site';
+
 const questions = [
   [
     '¿Para qué negocios está pensado?',
@@ -26,7 +28,7 @@ const questions = [
   ],
   [
     '¿Cómo se paga y qué pasa si tengo más depósitos?',
-    'El plan tiene una referencia de USD 39 por mes y la implementación de USD 99, con cobro en pesos al dólar oficial vendedor del Banco Nación al emitir cada cobro. La cotización informa impuestos y condiciones. Más de tres ubicaciones físicas u otra Tiendanube requieren revisar el alcance.',
+    `El plan tiene una referencia de USD ${offer.monthly} por mes y la implementación de USD ${offer.setup}, con cobro en pesos al dólar oficial vendedor del Banco Nación al emitir cada cobro. La cotización informa impuestos y condiciones. Más de tres ubicaciones físicas u otra Tiendanube requieren revisar el alcance.`,
   ],
 ];
 ---

@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import DemoLink from '../components/DemoLink.astro';
+import { offer } from '../lib/site';
 ---
 
 <Layout title="Precio y condiciones comerciales | NexoStock">
@@ -11,10 +12,10 @@ import DemoLink from '../components/DemoLink.astro';
     <article class="container legal-content">
       <p class="eyebrow">NEXOSTOCK BY BENAI</p>
       <h1>Precio y condiciones</h1>
-      <p>Oferta de lanzamiento. Actualización: 23 de octubre de 2026.</p>
+      <p>Oferta de lanzamiento. Actualización: 30 de octubre de 2026.</p>
       <h2>Precio y moneda de cobro</h2>
       <p>
-        Plan Negocio: referencia de USD 39 por mes. Implementación remota: referencia de USD 99 por
+        Plan Negocio: referencia de USD {offer.monthly} por mes. Implementación remota: referencia de USD {offer.setup} por
         única vez. Se cobra en pesos argentinos usando la cotización oficial vendedor del Banco
         Nación al emitir cada cobro. Los importes en pesos de la landing son estimados con el
         oficial vendedor de DolarAPI / Ámbito, con su fecha visible, y pueden diferir del monto
