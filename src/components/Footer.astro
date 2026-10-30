@@ -1,5 +1,6 @@
 ---
 import { whatsappUrl } from '../lib/site';
+const home = Astro.url.pathname === '/' ? '' : '/';
 ---
 
 <footer class="site-footer">
@@ -17,8 +18,8 @@ import { whatsappUrl } from '../lib/site';
         en su lugar.
       </p>
       <nav aria-label="Enlaces del pie">
-        <a href="/#como-funciona">Cómo funciona</a>
-        <a href="/#pricing">Precio y alcance</a>
+        <a href={`${home}#como-funciona`}>Cómo funciona</a>
+        <a href={`${home}#pricing`}>Precio y alcance</a>
         <a
           href={whatsappUrl}
           data-whatsapp

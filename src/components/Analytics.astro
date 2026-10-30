@@ -154,7 +154,9 @@ const campaigns = import.meta.env.PUBLIC_ANALYTICS_CAMPAIGNS || '';
     }
     const whatsapp = target?.closest<HTMLElement>('[data-whatsapp]');
     if (whatsapp) tracker.track('whatsapp_click', { placement: whatsapp.dataset.placement });
-    const demo = target?.closest<HTMLElement>('[data-demo-open], nav a[href="/#como-funciona"]');
+    const demo = target?.closest<HTMLElement>(
+      '[data-demo-open], nav a[href="#como-funciona"], nav a[href="/#como-funciona"]',
+    );
     if (demo)
       tracker.track('demo_open', { placement: demo.dataset.placement || 'navigation' }, true);
   });
