@@ -125,6 +125,48 @@ test('unknown UTM values are never passed through', () => {
   );
 });
 
+test('organic attribution keeps only a category and explicit UTMs take priority', () => {
+  const empty = new URLSearchParams();
+  assert.deepEqual(campaignProperties(empty, [], 'https://www.google.com.ar/search?q=private'), {
+    source: 'google',
+    medium: 'organic',
+    campaign: 'unassigned',
+  });
+  assert.equal(
+    campaignProperties(empty, [], 'https://l.instagram.com/?secret=private').source,
+    'instagram',
+  );
+  assert.deepEqual(campaignProperties(empty, [], 'https://example.com/private?email=private'), {
+    source: 'referral',
+    medium: 'referral',
+    campaign: 'unassigned',
+  });
+  assert.equal(
+    campaignProperties(empty, [], 'https://www.google.com.attacker.example/').source,
+    'referral',
+  );
+  for (const referrer of [
+    '',
+    'invalid',
+    'javascript:private',
+    'https://www.nexostock.benai.com.ar/privacidad',
+  ]) {
+    assert.equal(campaignProperties(empty, [], referrer).source, 'direct');
+  }
+  assert.deepEqual(
+    campaignProperties(
+      new URLSearchParams('utm_source=instagram&utm_medium=paid_social&utm_campaign=local_online'),
+      ['local_online'],
+      'https://www.google.com/',
+    ),
+    {
+      source: 'instagram',
+      medium: 'paid_social',
+      campaign: 'local_online',
+    },
+  );
+});
+
 test('opening the walkthrough and selecting steps count a single demo opening', () => {
   const { tracker, requests } = fixture();
   tracker.setConsent(true);

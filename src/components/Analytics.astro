@@ -1,6 +1,6 @@
 ---
 const key = import.meta.env.PUBLIC_POSTHOG_KEY || '';
-const host = import.meta.env.PUBLIC_POSTHOG_HOST || 'https://eu.i.posthog.com';
+const host = import.meta.env.PUBLIC_POSTHOG_HOST || '';
 const environment = import.meta.env.PUBLIC_ANALYTICS_ENV || 'disabled';
 const campaigns = import.meta.env.PUBLIC_ANALYTICS_CAMPAIGNS || '';
 ---
@@ -92,7 +92,11 @@ const campaigns = import.meta.env.PUBLIC_ANALYTICS_CAMPAIGNS || '';
     environment: config.dataset.environment || '',
     hostname: location.hostname,
     reference,
-    campaign: campaignProperties(params, (config.dataset.campaigns || '').split(',')),
+    campaign: campaignProperties(
+      params,
+      (config.dataset.campaigns || '').split(','),
+      document.referrer,
+    ),
     device: matchMedia('(max-width: 600px)').matches
       ? 'mobile'
       : matchMedia('(max-width: 1024px)').matches

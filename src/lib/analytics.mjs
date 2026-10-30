@@ -19,10 +19,31 @@ export const PLACEMENTS = [
 export const CONSENT_KEY = 'ns-measurement-v1';
 export const SESSION_KEY = 'ns-reference-v1';
 
-/** @param {URLSearchParams} params @param {string[]} campaigns */
-export function campaignProperties(params, campaigns = []) {
-  const source = params.get('utm_source') || 'direct';
-  const medium = params.get('utm_medium') || 'none';
+/** Reduce the referrer locally to a category; never transmit its URL or hostname. */
+function referrerCategory(referrer) {
+  try {
+    const url = new URL(referrer);
+    if (!['https:', 'http:'].includes(url.protocol)) return { source: 'direct', medium: 'none' };
+    const host = url.hostname;
+    const belongsTo = (domain) => host === domain || host.endsWith(`.${domain}`);
+    if (belongsTo('nexostock.benai.com.ar')) return { source: 'direct', medium: 'none' };
+    if (['google.com', 'google.com.ar', 'google.es'].some(belongsTo))
+      return { source: 'google', medium: 'organic' };
+    if (belongsTo('instagram.com')) return { source: 'instagram', medium: 'organic' };
+    if (belongsTo('facebook.com') || belongsTo('fb.com'))
+      return { source: 'facebook', medium: 'organic' };
+    return { source: 'referral', medium: 'referral' };
+  } catch {
+    return { source: 'direct', medium: 'none' };
+  }
+}
+
+/** @param {URLSearchParams} params @param {string[]} campaigns @param {string} referrer */
+export function campaignProperties(params, campaigns = [], referrer = '') {
+  const inferred = referrerCategory(referrer);
+  const hasAttribution = params.has('utm_source') || params.has('utm_medium');
+  const source = params.get('utm_source') || (hasAttribution ? 'direct' : inferred.source);
+  const medium = params.get('utm_medium') || (hasAttribution ? 'none' : inferred.medium);
   const campaign = params.get('utm_campaign');
   return {
     source: ['direct', 'instagram', 'facebook', 'google', 'referral'].includes(source)

@@ -29,12 +29,12 @@ Los CTA abren WhatsApp directamente con un mensaje editable y la referencia alea
 
 `ProductPreview` y `Walkthrough` usan ejemplos identificados, con datos ficticios. No acceden a una instalación real. Las pestañas admiten teclado y el sitio respeta movimiento reducido. Los documentos comerciales se mantienen en Benai/NexoStock de Drive y en `nexo-stock/docs/ESTRATEGIA_COMERCIAL.md` y `PRICING_LANZAMIENTO.md`.
 
-## PostHog Free — preparado, deshabilitado por defecto
+## PostHog Free — producción configurada
 
-El titular todavía no tiene cuenta de PostHog y pidió dejar la configuración preparada. No hay SDK ni grabaciones: el cliente envía únicamente cinco tipos de evento a la API Capture, después de aceptar medición. No se creó una cuenta ni se contrataron servicios.
+La organización **Benai Company** usa el proyecto **NexoStock**, ID `699959`, región **US**, con zona horaria `America/Argentina/Buenos_Aires`. Las variables se administran en Vercel `nexo-stock-landing`, exclusivamente para producción. Preview y desarrollo mantienen `PUBLIC_ANALYTICS_ENV=disabled`. No hay SDK ni grabaciones: el cliente envía únicamente cinco tipos de evento a la API Capture después de aceptar medición. No se contrataron complementos ni se agregaron medios de pago.
 
-1. Crear un proyecto Free, sin tarjeta ni complementos, y elegir región EU o US.
-2. En ajustes de privacidad, descartar IP y desactivar geolocalización, replay y autocaptura. Mantener retención de hasta doce meses.
+1. Para otra instalación, crear o elegir un proyecto Free, sin tarjeta ni complementos, y comprobar su región.
+2. En ajustes de privacidad, descartar IP y desactivar replay y autocaptura. El cliente también desactiva geolocalización. El historial consultable del plan Free es de un año; ese límite no es una garantía de eliminación física.
 3. Copiar `.env.example` a `.env.local` o configurar las variables en el proveedor de hosting. Usar el **token público de proyecto phc_**, nunca una clave personal/secreta. Fijar el host a la región correcta.
 4. Usar `PUBLIC_ANALYTICS_ENV=production` solo para el build de producción. Dejarlo `disabled` en previews y pruebas. Solo los dominios `nexostock.benai.com.ar` y `www.nexostock.benai.com.ar` pueden enviar eventos.
 5. Configurar `PUBLIC_ANALYTICS_CAMPAIGNS` con códigos exactos admitidos. Ejemplo: `?utm_source=instagram&utm_medium=paid_social&utm_campaign=local_online`. Los valores desconocidos se reducen a `other` o `unassigned`; otros parámetros nunca se transmiten.
@@ -44,9 +44,11 @@ Para excluir staff: abrir `/?ns_internal=1` una vez por navegador. Para quitar l
 
 Eventos: `landing_view`, `pricing_view`, `demo_open`, `demo_step_view`, `whatsapp_click`. La referencia de sesión se almacena solo después de aceptar; sin consentimiento es efímera y no se relaciona con eventos. No se comparten cookies entre subdominios, no se crean perfiles personales ni se envían URLs, productos, importes o datos de compradores.
 
-Los tests usan transporte simulado para validar consentimiento, exclusiones, deduplicación y minimización. No prueban recepción en una cuenta todavía inexistente. Las visitas consentidas son una muestra; un clic a WhatsApp es intención, no un contacto confirmado.
+Los tests usan transporte simulado para validar consentimiento, exclusiones, deduplicación, atribución y minimización. La recepción real debe comprobarse además en PostHog después del despliegue. Las visitas consentidas son una muestra; un clic a WhatsApp es intención, no un contacto confirmado. Los gráficos de sesiones cuentan referencias aleatorias, no personas únicas ni usuarios recurrentes.
 
-El exportador agregado del producto, las consultas para insights y la plantilla comercial están en `nexo-stock/docs/ANALITICA_Y_NSM.md`. No requieren Group Analytics ni activar un scheduler. Las APIs operativas del producto no cambiaron.
+Las UTMs explícitas tienen prioridad. Sin UTMs, se clasifica localmente el origen conocido (Google, Instagram o Facebook), otro referido o directo. Solo se transmite la categoría; nunca el dominio o URL de referencia. Un navegador que omite el referrer puede aparecer como directo.
+
+La analítica operativa del producto y el seguimiento de consultas, demos y clientes son trabajos separados. El documento `nexo-stock/docs/ANALITICA_Y_NSM.md` mencionado anteriormente no existe en el checkout actual y no demuestra que haya un exportador de producto instalado. No hay un scheduler analítico ni se modifican las APIs operativas.
 
 ## Antes de publicar
 
